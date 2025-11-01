@@ -110,13 +110,13 @@
 <body>
   <div class="wrap">
     <div class="carousel">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56 (3).jpeg" class="active">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56 (2).jpeg">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56 (1).jpeg">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56.jpeg">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.55 (1).jpeg">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.55.jpeg">
-      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.54.jpeg">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.56 (3).jpeg" class="active">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.56 (2).jpeg">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.56 (1).jpeg">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.56.jpeg">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.55 (1).jpeg">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.55.jpeg">
+      <img src="WhatsApp Image 2025-10-31 at 08.09.54.jpeg">
     </div>
 
     <div class="pedido">
@@ -137,9 +137,8 @@
 
     <div class="frase-final">💞 QUER CASAR COMIGO ? 💞</div>
 
-    <!-- Música -->
     <audio id="musica" autoplay loop>
-      <source src="C:\Users\09230021970\Downloads\musica-fundo.mp3" type="audio/mpeg">
+      <source src="musica-fundo.mp3" type="audio/mpeg">
     </audio>
   </div>
 
@@ -163,7 +162,6 @@
     i=(i+1)%imgs.length;
   },2000);
 
-  // tentar iniciar som mesmo se bloqueado no mobile
   window.addEventListener('load', ()=>{
     const audio=document.getElementById('musica');
     const tentarTocar=()=>audio.play().catch(()=>{});
