@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pedido de Casamento 💍</title>
+<style>
+  :root{
+    --rosa-fundo:#ffd6e8;
+    --rosa-borda:#ff4d6d;
+    --texto-cor:#c40039;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    padding:0;
+    background-color:var(--rosa-fundo);
+    font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  }
+
+  .wrap{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .carousel{
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    overflow:hidden;
+    border:8px solid var(--rosa-borda);
+    box-shadow:0 0 40px rgba(255,0,85,0.25);
+    position:relative;
+    z-index:2;
+  }
+
+  .carousel img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    opacity:0;
+    transition:opacity 0.8s ease-in-out;
+  }
+
+  .carousel img.active{ opacity:1; }
+
+  .pedido{
+    max-width:900px;
+    text-align:center;
+    color:var(--texto-cor);
+    font-size:1.25rem;
+    line-height:1.5;
+    font-weight:600;
+    padding:0 20px;
+    z-index:2;
+  }
+
+  .frase-final{
+    font-size:3rem;
+    color:var(--rosa-borda);
+    font-weight:900;
+    text-shadow:0 0 10px rgba(255,77,109,0.6),0 0 25px rgba(255,0,100,0.4);
+    animation:pulsa 2s infinite alternate;
+    text-align:center;
+    z-index:2;
+  }
+
+  @keyframes pulsa{
+    from{ transform:scale(1); opacity:0.9; }
+    to{ transform:scale(1.1); opacity:1; }
+  }
+
+  .heart{
+    position:absolute;
+    bottom:-10px;
+    font-size:20px;
+    opacity:.9;
+    animation:subir 6s linear infinite;
+    pointer-events:none;
+    z-index:1;
+  }
+  @keyframes subir{
+    0%{ transform:translateY(0) scale(1); opacity:1; }
+    100%{ transform:translateY(-120vh) scale(1.25); opacity:0; }
+  }
+
+  @media(max-width:900px){
+    .carousel{ width:86vw; height:86vw; border-width:6px; }
+    .pedido{ font-size:1.05rem; }
+    .frase-final{ font-size:2.3rem; }
+  }
+
+  @media(max-width:420px){
+    .carousel{ width:92vw; height:92vw; }
+    .pedido{ font-size:1rem; padding:0 14px; }
+    .frase-final{ font-size:1.9rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="carousel">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56 (3).jpeg" class="active">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56 (2).jpeg">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56 (1).jpeg">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.56.jpeg">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.55 (1).jpeg">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.55.jpeg">
+      <img src="C:\Users\09230021970\Downloads\WhatsApp Image 2025-10-31 at 08.09.54.jpeg">
+    </div>
+
+    <div class="pedido">
+      <p>
+        Desde o dia em que te encontrei, meu coração aprendeu o que é paz.<br>
+        Você virou meu abrigo, meu sorriso mais sincero,<br>
+        e quando estamos juntos, o tempo parece parar.<br><br>
+
+        Quero construir todos os meus dias ao seu lado,<br>
+        dividir o pôr do sol, o café da manhã, o silêncio e o riso.<br><br>
+
+        Se o amor é uma estrela, você é a minha maior.<br><br>
+
+        <strong>Porque em cada passo, em cada sonho e em cada desafio,<br>
+        é com você que eu me encontro, é com você que eu me sinto em casa. 💍❤️</strong>
+      </p>
+    </div>
+
+    <div class="frase-final">💞 QUER CASAR COMIGO ? 💞</div>
+
+    <!-- Música -->
+    <audio id="musica" autoplay loop>
+      <source src="C:\Users\09230021970\Downloads\musica-fundo.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+<script>
+  function criarCoracao(){
+    const c=document.createElement('div');
+    c.className='heart';
+    c.textContent='❤️';
+    c.style.left=Math.random()*100+'vw';
+    c.style.fontSize=(16+Math.random()*28)+'px';
+    c.style.animationDuration=(3+Math.random()*4)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),7000);
+  }
+  setInterval(criarCoracao,300);
+
+  const imgs=document.querySelectorAll('.carousel img');
+  let i=0;
+  setInterval(()=>{
+    imgs.forEach((img,idx)=>img.classList.toggle('active',idx===i));
+    i=(i+1)%imgs.length;
+  },2000);
+
+  // tentar iniciar som mesmo se bloqueado no mobile
+  window.addEventListener('load', ()=>{
+    const audio=document.getElementById('musica');
+    const tentarTocar=()=>audio.play().catch(()=>{});
+    tentarTocar();
+    document.body.addEventListener('click', tentarTocar, {once:true});
+  });
+</script>
+</body>
+</html>
